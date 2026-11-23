@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bav4xjhx3033q"]
+
+[ext_resource type="Shader" uid="uid://de52kf7h1ik2u" path="res://src/mainmenu_concept.gdshader" id="1_8ho6b"]
+[ext_resource type="Script" uid="uid://3gsme4k8ysbg" path="res://src/tutorial.gd" id="1_ph3nu"]
+[ext_resource type="Texture2D" uid="uid://dqshl0aqgrup0" path="res://img/spr_intro/spr_intro_0.png" id="2_nlqja"]
+[ext_resource type="Texture2D" uid="uid://16rm1u35km37" path="res://img/bg.png" id="2_ph3nu"]
+[ext_resource type="Texture2D" uid="uid://bve63clxge62v" path="res://img/spr_intro/spr_intro_1.png" id="3_0epgs"]
+[ext_resource type="Texture2D" uid="uid://dffhhr3oyetp7" path="res://img/spr_intro/spr_intro_2.png" id="4_g2equ"]
+[ext_resource type="FontFile" uid="uid://dnmh3qjygyvb2" path="res://papyrus.ttf" id="5_cq4me"]
+[ext_resource type="Texture2D" uid="uid://coo6eq2o5nsr7" path="res://img/spr_intro/spr_intro_3.png" id="5_tbcdj"]
+[ext_resource type="Script" uid="uid://bbwxsrlm6eo41" path="res://src/dialogue_system.gd" id="6_dialog"]
+[ext_resource type="AudioStream" uid="uid://h7e1bobrlf58" path="res://snd/blueyType.wav" id="9_0epgs"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nx56f"]
+width = 128
+height = 128
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kmhl"]
+shader = ExtResource("1_8ho6b")
+shader_parameter/scale = Vector2(5.52, 5.27)
+shader_parameter/strength = -0.45
+shader_parameter/fps = 3.0
+shader_parameter/noise = SubResource("NoiseTexture2D_nx56f")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nlqja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0epgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g2equ")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tbcdj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6yjpi"]
+line_spacing = 1.0
+font = ExtResource("5_cq4me")
+font_size = 19
+outline_size = 1
+outline_color = Color(0.2809355, 0.08057382, 0.238945, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.09019608)
+shadow_offset = Vector2(1, 0.615)
+
+[node name="Tutorial" type="Node2D" unique_id=419209348]
+script = ExtResource("1_ph3nu")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=272523702]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+z_index = -2
+texture_filter = 1
+material = SubResource("ShaderMaterial_4kmhl")
+position = Vector2(571.4444, 305.24997)
+scale = Vector2(0.7421296, 0.7421297)
+texture = ExtResource("2_ph3nu")
+metadata/_edit_lock_ = true
+
+[node name="DialogueBox" type="ColorRect" parent="." unique_id=757662995]
+offset_left = -19.0
+offset_top = 458.0
+offset_right = 1188.0
+offset_bottom = 672.0
+color = Color(0, 0, 0, 0.2901961)
+script = ExtResource("6_dialog")
+characters_per_second = 30.0
+typing_sound = ExtResource("9_0epgs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DialogueBox" unique_id=2062546395]
+z_index = -1
+position = Vector2(834, -67)
+scale = Vector2(1.0000001, 1.0000001)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+frame = 2
+frame_progress = 0.8244718
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox" unique_id=2041004462]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 39.0
+offset_right = 1138.0
+offset_bottom = 167.0
+bbcode_enabled = true
+text = "[shake] hi [/shake]"
+
+[node name="CharacterRect" type="ColorRect" parent="DialogueBox" unique_id=144729020]
+layout_mode = 0
+offset_left = 33.0
+offset_top = -40.0
+offset_right = 338.0
+color = Color(0, 0, 0, 0.5529412)
+
+[node name="CharacterLabel" type="Label" parent="DialogueBox" unique_id=1517171561]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -35.0
+offset_right = 328.0
+offset_bottom = -5.0
+text = "Character"
+label_settings = SubResource("LabelSettings_6yjpi")

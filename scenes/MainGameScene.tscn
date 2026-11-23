@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://b41s5pqji03yk"]
+
+[ext_resource type="Script" uid="uid://bi3rfuc6lqxmv" path="res://src/main_game_scene.gd" id="1_cckdu"]
+[ext_resource type="Shader" uid="uid://de52kf7h1ik2u" path="res://src/mainmenu_concept.gdshader" id="1_cpixv"]
+[ext_resource type="Texture2D" uid="uid://16rm1u35km37" path="res://img/bg.png" id="2_foylg"]
+[ext_resource type="FontFile" uid="uid://dnmh3qjygyvb2" path="res://papyrus.ttf" id="3_foylg"]
+[ext_resource type="Shader" uid="uid://bjw8go8g7s3u1" path="res://src/check.gdshader" id="4_jpwhd"]
+[ext_resource type="Texture2D" uid="uid://cd7vr7w75lcpa" path="res://icon.svg" id="5_dl7an"]
+[ext_resource type="PackedScene" uid="uid://b71i4qagt22km" path="res://scenes/obj/button.tscn" id="5_xh18f"]
+[ext_resource type="AudioStream" uid="uid://cto68qghtyqjq" path="res://snd/click.ogg" id="6_typesound"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dl7an"]
+width = 128
+height = 128
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cckdu"]
+shader = ExtResource("1_cpixv")
+shader_parameter/scale = Vector2(5.52, 5.27)
+shader_parameter/strength = -0.45
+shader_parameter/fps = 3.0
+shader_parameter/noise = SubResource("NoiseTexture2D_dl7an")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xh18f"]
+shader = ExtResource("4_jpwhd")
+shader_parameter/color_a = Color(0.9019608, 0.9019608, 0.9019608, 0.015686275)
+shader_parameter/color_b = Color(0.2, 0.2, 0.2, 0)
+shader_parameter/checker_size = 8.0
+shader_parameter/scroll_speed = Vector2(1, 1)
+shader_parameter/angle_degrees = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cckdu"]
+line_spacing = 1.0
+font = ExtResource("3_foylg")
+font_size = 44
+font_color = Color(1, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0.2809355, 0.08057382, 0.238945, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.09019608)
+shadow_offset = Vector2(1, 0.615)
+
+[sub_resource type="LabelSettings" id="LabelSettings_question"]
+line_spacing = 1.0
+font = ExtResource("3_foylg")
+font_size = 44
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_score"]
+line_spacing = 1.0
+font = ExtResource("3_foylg")
+font_size = 34
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dl7an"]
+line_spacing = 1.0
+font = ExtResource("3_foylg")
+font_size = 51
+font_color = Color(1, 0, 0.30588236, 1)
+outline_size = 1
+outline_color = Color(0.2809355, 0.08057382, 0.238945, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.09019608)
+shadow_offset = Vector2(1, 0.615)
+
+[node name="Node2D" type="Node2D" unique_id=356519862]
+script = ExtResource("1_cckdu")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=716300337]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_cckdu")
+position = Vector2(571.4444, 305.24997)
+scale = Vector2(0.7421296, 0.7421297)
+texture = ExtResource("2_foylg")
+
+[node name="Bg2" type="Sprite2D" parent="." unique_id=464426742]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_cckdu")
+position = Vector2(502.00018, 1109)
+scale = Vector2(2.2635417, 0.7421297)
+texture = ExtResource("2_foylg")
+
+[node name="Bg3" type="Sprite2D" parent="." unique_id=537970896]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_cckdu")
+position = Vector2(-850.99994, 311)
+scale = Vector2(0.7421296, 0.7421297)
+texture = ExtResource("2_foylg")
+
+[node name="Bg4" type="Sprite2D" parent="." unique_id=1944663402]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_cckdu")
+position = Vector2(379.00012, -495.00012)
+scale = Vector2(2.4427083, 0.7421297)
+texture = ExtResource("2_foylg")
+
+[node name="Bg5" type="Sprite2D" parent="." unique_id=747365748]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_cckdu")
+position = Vector2(1995.0001, 308.00012)
+scale = Vector2(0.7421296, 0.7421297)
+texture = ExtResource("2_foylg")
+
+[node name="check" type="Sprite2D" parent="." unique_id=262590176]
+material = SubResource("ShaderMaterial_xh18f")
+position = Vector2(566, 364)
+scale = Vector2(9.9296875, 9.9296875)
+texture = ExtResource("5_dl7an")
+
+[node name="Label" type="Label" parent="." unique_id=1040229168]
+offset_left = 219.0
+offset_top = 17.44
+offset_right = 937.0
+offset_bottom = 87.44
+pivot_offset = Vector2(359, 35)
+size_flags_horizontal = 4
+text = "CHOOSE RIGHT ANSWER"
+label_settings = SubResource("LabelSettings_cckdu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Question" type="Label" parent="." unique_id=447812300]
+offset_left = 31.0
+offset_top = 134.0
+offset_right = 1128.0
+offset_bottom = 232.0
+pivot_offset = Vector2(359, 145)
+pivot_offset_ratio = Vector2(0.173, -1.055)
+text = "piska"
+label_settings = SubResource("LabelSettings_question")
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 2
+
+[node name="Score" type="Label" parent="." unique_id=771200455]
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 216.0
+offset_bottom = 62.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_score")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ban" parent="." unique_id=1520196001 instance=ExtResource("5_xh18f")]
+position = Vector2(351.00003, 448)
+text = "BAN"
+
+[node name="Noban" parent="." unique_id=1009598411 instance=ExtResource("5_xh18f")]
+position = Vector2(813, 447.00003)
+text = "UNBAN"
+
+[node name="TypeSound" type="AudioStreamPlayer" parent="." unique_id=662901144]
+stream = ExtResource("6_typesound")
+volume_db = -8.0
+pitch_scale = 1.5
+
+[node name="TimerLabel" type="Label" parent="." unique_id=452534581]
+offset_left = 439.0
+offset_top = 270.0
+offset_right = 709.0
+offset_bottom = 355.0
+text = "45.00"
+label_settings = SubResource("LabelSettings_dl7an")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1183676964]
+wait_time = 45.0
+one_shot = true
+
+[node name="Shop" parent="." unique_id=389674135 instance=ExtResource("5_xh18f")]
+position = Vector2(123, 603)
+scale = Vector2(3, 3)
+text = "SHOP"
+ButtonColor = Color(0.2, 0.8784314, 0, 1)
+ExpandScale = 3.7
+OriginalScale = 3.0

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bpux20qxnmrxc"]
+
+[ext_resource type="Texture2D" uid="uid://16rm1u35km37" path="res://img/bg.png" id="1_bdhqh"]
+[ext_resource type="PackedScene" uid="uid://b71i4qagt22km" path="res://scenes/obj/button.tscn" id="2_unw4i"]
+
+[node name="Node2D" type="Node2D" unique_id=525153266]
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1521016140]
+position = Vector2(768, 317)
+texture = ExtResource("1_bdhqh")
+
+[node name="Button" parent="." unique_id=1520196001 instance=ExtResource("2_unw4i")]
+position = Vector2(359, 227)

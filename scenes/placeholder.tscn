@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://yogfbpv3n3tr"]
+
+[ext_resource type="Script" uid="uid://dlifmeyil6cdi" path="res://src/placeholder.gd" id="1_c40o3"]
+
+[node name="Placeholder" type="Node2D" unique_id=7531563]
+script = ExtResource("1_c40o3")
+
+[node name="WebView" type="WebView" parent="." unique_id=1265964015]
+url = "https://cards.45aek.life/"
+transparent = true
+devtools = false
+zoom_hotkeys = true
+autoplay = true
+offset_right = 1151.0
+offset_bottom = 649.0

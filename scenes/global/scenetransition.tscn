@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://jbg00h6qhfny"]
+
+[ext_resource type="Shader" uid="uid://d0vs3ptk8kns8" path="res://transition.gdshader" id="1_7hdfb"]
+[ext_resource type="Script" uid="uid://bag25dly7kl6b" path="res://src/scenetransition.gd" id="1_bf47v"]
+[ext_resource type="Texture2D" uid="uid://d4m2xk8xmapq6" path="res://img/white.png" id="2_6qd5y"]
+[ext_resource type="Texture2D" uid="uid://dr7wuu11in3xq" path="res://img/uncorrectImage.png" id="5_2det1"]
+[ext_resource type="Texture2D" uid="uid://bbl0p5xfdsxbi" path="res://img/spr_explosion/0a21eb33-6d46-447a-91ca-7bd7194d9d84.png" id="5_vwe6l"]
+
+[sub_resource type="Environment" id="Environment_g4v7s"]
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.14
+glow_strength = 1.5
+glow_mix = 0.07
+glow_bloom = 0.58
+glow_hdr_threshold = 1.33
+glow_hdr_scale = 1.59
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qd5y"]
+shader = ExtResource("1_7hdfb")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 15.0
+
+[sub_resource type="Animation" id="Animation_bf47v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6qd5y"]
+resource_name = "animFade"
+length = 0.63
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bf47v"]
+_data = {
+&"RESET": SubResource("Animation_bf47v"),
+&"animFade": SubResource("Animation_6qd5y")
+}
+
+[sub_resource type="Curve" id="Curve_yf5fn"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.19124424, 1), 0.0, 0.0, 0, 0, Vector2(0.47235024, 1), 0.0, 0.0, 0, 0, Vector2(0.75345623, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="Scenetransition" type="CanvasLayer" unique_id=1198169958]
+script = ExtResource("1_bf47v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=185086675]
+environment = SubResource("Environment_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=648115469]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_6qd5y")
+position = Vector2(581.50006, 333)
+scale = Vector2(0.8057422, 0.6607575)
+texture = ExtResource("2_6qd5y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=563729212]
+libraries/ = SubResource("AnimationLibrary_bf47v")
+
+[node name="Timer" type="Timer" parent="." unique_id=1467986448]
+wait_time = 0.7
+one_shot = true
+
+[node name="UncorrectImage" type="Sprite2D" parent="." unique_id=462135387]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(536.00006, 311)
+scale = Vector2(2.892135, 1.4735956)
+texture = ExtResource("5_2det1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=781438541]
+position = Vector2(575, 299)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1003398240]
+position = Vector2(574, 1)
+emitting = false
+amount = 170
+texture = ExtResource("5_vwe6l")
+lifetime = 1.7
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 1900)
+initial_velocity_min = 178.04
+initial_velocity_max = 1180.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+color = Color(0.8392157, 0.8392157, 0.8392157, 0.3019608)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_yf5fn")

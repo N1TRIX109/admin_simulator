@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dj86qgpiqd5kf"]
+
+[ext_resource type="AudioStream" uid="uid://cto68qghtyqjq" path="res://snd/click.ogg" id="1_1rwlp"]
+[ext_resource type="Script" uid="uid://c6c4bn2ygmq01" path="res://src/sound_system.gd" id="2_a46md"]
+[ext_resource type="AudioStream" uid="uid://005224jlctub" path="res://placeholder_audio.ogg" id="3_cuq5v"]
+
+[node name="SoundSystem" type="AudioStreamPlayer" unique_id=2101416246 node_paths=PackedStringArray("MusicNode")]
+stream = ExtResource("1_1rwlp")
+script = ExtResource("2_a46md")
+MusicNode = NodePath("MusicStream")
+
+[node name="MusicStream" type="AudioStreamPlayer" parent="." unique_id=1167110857]
+stream = ExtResource("3_cuq5v")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
